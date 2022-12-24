@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+import { cleanData, manipulateData, parseData } from './utilities';
+
+export const getData = async (url: string): Promise<any> => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const parsedData = parseData(data);
+  const cleanedData = cleanData(parsedData);
+  const manipulatedData = manipulateData(cleanedData);
+  return manipulatedData;
+}
 const getCategories = async () => {
   const response = await axios.get('https://api.sofascore.com/api/v1/sport/football/categories');
   return response.data;
