@@ -3,7 +3,7 @@
 dataStore as an argument and creates a CSV file with the data from the dataStore. The CSV file is then downloaded using the browser's download API.
  */
 
-import { dataStore } from "./data";
+import { DataStore } from "./data";
 
 const writeToCSV = (dataStore: DataStore) => {
   const headers = Object.keys(dataStore.data[0]);
