@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import SoccerStats from './SoccerStats';
 import api from "./api";
 import writeToCSV from "./csv";
 import { dataStore } from "./data";
