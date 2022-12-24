@@ -3,7 +3,24 @@ import './App.css';
 import React from 'react';
 
 import { cleanData, manipulateData, parseData } from './utilities';
-import { getCategories, getCharacteristics, getHeatMap, getNationalTeamStats, getPenaltyHistory, getPlayerStats, getSeasonStats, getTeamStats, getTournaments, getTransfers } from './api';
+import {
+  getCategories,
+  getPlayerAttributeOverviews,
+  getPlayerCharacteristics,
+  getPlayerInfo,
+  getPlayerLastYearSummary,
+  getPlayerNationalTeamStatistics,
+  getPlayerPenaltyHistory,
+  getPlayerStatisticsSeasons,
+  getPlayerUniqueTournamentHeatmap,
+  getPlayerUniqueTournamentStatistics,
+  getTeamInfo,
+  getTeamPlayers,
+  getTeamStanding,
+  getTeamStandingsSeasons,
+  getTeamTransfers,
+  getTournaments
+} from './api'
 
 function App() {
   const [categories, setCategories] = React.useState([]);
