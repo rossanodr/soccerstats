@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 
 import { cleanData, manipulateData, parseData } from './utilities';
-import { getCategories, getHeatMap, getNationalTeamStats, getPenaltyHistory, getPlayerCharacteristics, getPlayerStats, getSeasonStats, getTeamStats, getTournaments, getTransfers } from './api';
+import { getCategories, getCharacteristics, getHeatMap, getNationalTeamStats, getPenaltyHistory, getPlayerStats, getSeasonStats, getTeamStats, getTournaments, getTransfers } from './api';
 
 function App() {
   const [categories, setCategories] = React.useState([]);
