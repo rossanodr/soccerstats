@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import api from "./api";
+import writeToCSV from "./csv";
+import { dataStore } from "./data";
+
+const App: React.FC = () => {
+  useEffect(() => {
+    api
+      .get("sport/football/categories")
+      .then((response) => {
+        // store data in dataStore
+        dataStore.data = response.data;
+
+        // make additional API calls
+        api
+          .get("category/13/unique-tournaments")
+          .then((response) => {
+            // store data in dataStore
+            dataStore.data = [...dataStore.data, ...response.data];
+
+            // make additional API calls
+            api
+              .get("unique-tournament/325/season/40557/standings/total")
+              .then((response) => {
+                // store data in dataStore
+                dataStore.data = [...dataStore.data, ...response.data];
+
+                // call writeToCSV to write data to CSV file  writeToCSV(dataStore);
+              })
+              .catch((error) => {
+                // handle error
+              });
+          })
+          .catch((error) => {
+            // handle error
+          });
+      })
+      .catch((error) => {
+        // handle error
+      });
+  }, []);
+
+  writeToCSV(dataStore);
+
+  return <div>Hello World!</div>;
+};
 
 export default App;
